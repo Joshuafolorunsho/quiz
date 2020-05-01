@@ -9,6 +9,13 @@ body {
    background-color: #666;
 }
 
+
+html {
+   font-size: 62.5%;
+   font-family: 'Open Sans', sans-serif;
+}
+
+
 .container {
    margin: 80px auto;
    width: 80%;
@@ -16,13 +23,22 @@ body {
    background-color: #fff;
    border-radius: 5px;
    padding: 3%;
+   font-size: 1.3rem;
 }
 
-.container > p{
-   height: 20%;
+
+.record {
+   display: flex;
+   justify-content: space-between;
+}
+
+
+.question{
+   font-weight: 600;
    display: flex;
    align-items: center;
-   font-size: 1.3rem;
+   height: 20%;
+   font-size: 2rem;
 }
 
 .option {
@@ -34,6 +50,7 @@ body {
    margin: 8px auto;
    display: flex;
    align-items: center;
+   cursor: pointer;
 }
 
 
@@ -46,10 +63,30 @@ body {
 .btn {
    background-color: rgb(255, 137, 2);
    border: none;
+   color: #fff;
+   cursor: pointer;
    width: 100px;
    padding: 10px 30px;
 }
+
+
+.wrong {
+   background-color: red;
+   color: #fff;
+}
+
+
+.correct {
+   background-color: green;
+   color: #fff;
+}
+
+
 @media (min-width: 768px) {
+
+   html {
+      font-size: 75%;
+   }
 
    .container{
       width: 50%;
