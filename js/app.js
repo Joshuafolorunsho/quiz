@@ -16,7 +16,7 @@ let currentScore        = document.querySelector('.current-score'),
 
 
 // Questions
-const quiz = [
+const questions = [
 	{
 		question: 'What is Node.JS?',
 		options: [
@@ -71,13 +71,13 @@ const quiz = [
 // Change text content
 const showContent = () => {
    currentQuestion.textContent = activeQuestion;
-   totalQuestion.textContent = quiz.length;
+   totalQuestion.textContent = questions.length;
    currentScore.textContent = score;
-   question.textContent = quiz[activeQuestion - 1].question;
-   optionOne.textContent = quiz[activeQuestion - 1].options[0];
-   optionTwo.textContent = quiz[activeQuestion - 1].options[1];
-   optionThree.textContent = quiz[activeQuestion - 1].options[2];
-   optionFour.textContent = quiz[activeQuestion - 1].options[3];
+   question.textContent = questions[activeQuestion - 1].question;
+   optionOne.textContent = questions[activeQuestion - 1].options[0];
+   optionTwo.textContent = questions[activeQuestion - 1].options[1];
+   optionThree.textContent = questions[activeQuestion - 1].options[2];
+   optionFour.textContent = questions[activeQuestion - 1].options[3];
 }
 
 showContent();
@@ -85,7 +85,7 @@ showContent();
 const disableBtn = () => {
    options.forEach(option => {
       option.classList.add('disabled');
-      if (option.textContent === quiz[activeQuestion - 1].answer){
+      if (option.textContent === questions[activeQuestion - 1].answer){
          option.classList.add('correct');
       }
    })
@@ -93,7 +93,7 @@ const disableBtn = () => {
 
 const checkOptionOne = () => {
 
-   if (optionOne.textContent === quiz[activeQuestion - 1].answer) {
+   if (optionOne.textContent === questions[activeQuestion - 1].answer) {
       optionOne.classList.add('correct');
       score++;
       showContent();
@@ -107,7 +107,7 @@ const checkOptionOne = () => {
 }
 
 const checkOptionTwo = () => {
-   if (optionTwo.textContent === quiz[activeQuestion - 1].answer) {
+   if (optionTwo.textContent === questions[activeQuestion - 1].answer) {
       optionTwo.classList.add('correct');
       score++;
       showContent();
@@ -121,7 +121,7 @@ const checkOptionTwo = () => {
 
 const checkOptionThree = () => {
    
-   if (optionThree.textContent === quiz[activeQuestion - 1].answer) {
+   if (optionThree.textContent === questions[activeQuestion - 1].answer) {
       optionThree.classList.add('correct');
       score++;
       showContent();
@@ -135,7 +135,7 @@ const checkOptionThree = () => {
 
 const checkOptionFour = () => {
    
-   if (optionFour.textContent === quiz[activeQuestion - 1].answer) {
+   if (optionFour.textContent === questions[activeQuestion - 1].answer) {
       optionFour.classList.add('correct');
       score++;
       showContent();
@@ -148,12 +148,14 @@ const checkOptionFour = () => {
 }
 
 const nextQuestion = () => {
-   activeQuestion = activeQuestion + 1;
-   showContent();
-   btn.classList.remove('show');
-   options.forEach(option => {
-      option.classList.remove('wrong', 'correct', 'disabled');
-   })
+   if (activeQuestion <= questions.length) {
+      activeQuestion = activeQuestion + 1;
+      showContent();
+      btn.classList.remove('show');
+      options.forEach(option => {
+         option.classList.remove('wrong', 'correct', 'disabled');
+      })
+   }
 }
 
 // add event listener on all four options
