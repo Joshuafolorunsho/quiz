@@ -1,3 +1,16 @@
+// Caching selectors into variables
+const currentQuestion = document.querySelector('current-question'),
+      totalQuestion   = document.querySelector('total-question'),
+      currentScore    = document.querySelector('current-score'),
+      question        = document.querySelector('question'),
+      optionOne       = document.querySelector('option-1'),
+      optionTwo       = document.querySelector('option-2'),
+      optionThree     = document.querySelector('option-3'),
+      optionFour      = document.querySelector('option-4'),
+      btn             = document.querySelector('btn');
+
+
+// Questions
 const quiz = [
    {
       question: 'What is Node.JS?',
@@ -48,6 +61,8 @@ const quiz = [
   
 ];
 
+
+// Answers
 const answers = [
    {
       q1: quiz.question[2]
@@ -63,5 +78,7 @@ const answers = [
    },
    {
       q5: quiz.question[3]
-   },
-]
+   }
+];
+
+// 
