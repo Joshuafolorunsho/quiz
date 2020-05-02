@@ -95,7 +95,7 @@ const checkOptionOne = () => {
 
    if (optionOne.textContent === quiz[activeQuestion - 1].answer) {
       optionOne.classList.add('correct');
-      currentScore = currentScore + 1;
+      score++;
       showContent();
 
    } else {
@@ -150,7 +150,7 @@ const checkOptionFour = () => {
 const nextQuestion = () => {
    activeQuestion = activeQuestion + 1;
    showContent();
-   btn.classList.add('hide');
+   btn.classList.remove('show');
    options.forEach(option => {
       option.classList.remove('wrong', 'correct', 'disabled');
    })
