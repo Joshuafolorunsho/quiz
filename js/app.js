@@ -1,12 +1,13 @@
 // Caching selectors into variables
-const currentQuestion = document.querySelector('.current-question'),
-	totalQuestion      = document.querySelector('.total-question'),
-	question           = document.querySelector('.question'),
-	options            = document.querySelectorAll('li'),
+const container       = document.querySelector('.container').children,
+   currentQuestion    = document.querySelector('.current-question'),
+   totalQuestion      = document.querySelector('.total-question'),
+   question           = document.querySelector('.question'),
 	optionOne          = document.querySelector('.option-1'),
 	optionTwo          = document.querySelector('.option-2'),
 	optionThree        = document.querySelector('.option-3'),
 	optionFour         = document.querySelector('.option-4'),
+	options            = document.querySelectorAll('li'),
    btn                = document.querySelector('.btn');
    
 
@@ -82,6 +83,13 @@ const showContent = () => {
 
 showContent();
 
+// Show result
+const showResult = () => {
+   for (let item of container) {
+      item.innerHTML = '';
+   }
+}
+
 const disableBtn = () => {
    options.forEach(option => {
       option.classList.add('disabled');
@@ -103,6 +111,10 @@ const checkOptionOne = () => {
    }
    disableBtn();
    btn.classList.add('show');
+
+    if (activeQuestion === questions.length) {
+      showResult();
+   }
    
 }
 
@@ -117,6 +129,10 @@ const checkOptionTwo = () => {
    }
    disableBtn();
    btn.classList.add('show');
+
+    if (activeQuestion === questions.length) {
+      showResult();
+   }
 }
 
 const checkOptionThree = () => {
@@ -131,6 +147,11 @@ const checkOptionThree = () => {
    }
    disableBtn();
    btn.classList.add('show');
+
+    if (activeQuestion === questions.length) {
+      showResult();
+   }
+   
 }
 
 const checkOptionFour = () => {
@@ -145,17 +166,21 @@ const checkOptionFour = () => {
    }
    disableBtn();
    btn.classList.add('show');
+
+    if (activeQuestion === questions.length) {
+      showResult();
+   }
 }
 
 const nextQuestion = () => {
-   if (activeQuestion <= questions.length) {
+   if (activeQuestion < questions.length) {
       activeQuestion = activeQuestion + 1;
       showContent();
       btn.classList.remove('show');
       options.forEach(option => {
          option.classList.remove('wrong', 'correct', 'disabled');
       })
-   }
+   } 
 }
 
 // add event listener on all four options
