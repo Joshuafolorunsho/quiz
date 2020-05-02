@@ -111,9 +111,10 @@ const checkOptionOne = () => {
    }
    disableBtn();
    btn.classList.add('show');
-
+   
     if (activeQuestion === questions.length) {
-      showResult();
+      btn.classList.remove('show');
+      setTimeout(showResult, 3000);
    }
    
 }
@@ -131,7 +132,8 @@ const checkOptionTwo = () => {
    btn.classList.add('show');
 
     if (activeQuestion === questions.length) {
-      showResult();
+      btn.classList.remove('show');
+      setTimeout(showResult, 3000);
    }
 }
 
@@ -149,7 +151,8 @@ const checkOptionThree = () => {
    btn.classList.add('show');
 
     if (activeQuestion === questions.length) {
-      showResult();
+      btn.classList.remove('show');
+      setTimeout(showResult, 3000);
    }
    
 }
@@ -168,7 +171,8 @@ const checkOptionFour = () => {
    btn.classList.add('show');
 
     if (activeQuestion === questions.length) {
-      showResult();
+      btn.classList.remove('show');
+      setTimeout(showResult, 3000);
    }
 }
 
