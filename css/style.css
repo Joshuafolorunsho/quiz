@@ -55,6 +55,10 @@ html {
    font-size: 1.1rem;
 }
 
+.option.disabled{
+   pointer-events: none;
+}
+
 
 .btn-container {
    display: flex;
