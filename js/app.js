@@ -46,4 +46,22 @@ const quiz = [
       ]
    }
   
+];
+
+const answers = [
+   {
+      q1: quiz.question[2]
+   },
+   {
+      q2: quiz.question[0]
+   },
+   {
+      q3: quiz.question[0]
+   },
+   {
+      q4: quiz.question[3]
+   },
+   {
+      q5: quiz.question[3]
+   },
 ]
