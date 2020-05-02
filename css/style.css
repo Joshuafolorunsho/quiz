@@ -23,6 +23,7 @@ html {
    border-radius: 5px;
    padding: 3%;
    font-size: 1.3rem;
+   min-height: 350px;
 }
 
 
