@@ -95,6 +95,9 @@ const checkOptionOne = () => {
 
    if (optionOne.textContent === quiz[activeQuestion - 1].answer) {
       optionOne.classList.add('correct');
+      currentScore = currentScore + 1;
+      showContent();
+
    } else {
       optionOne.classList.add('wrong');
    }
@@ -106,6 +109,9 @@ const checkOptionOne = () => {
 const checkOptionTwo = () => {
    if (optionTwo.textContent === quiz[activeQuestion - 1].answer) {
       optionTwo.classList.add('correct');
+      score++;
+      showContent();
+
    } else {
       optionTwo.classList.add('wrong');
    }
@@ -117,6 +123,9 @@ const checkOptionThree = () => {
    
    if (optionThree.textContent === quiz[activeQuestion - 1].answer) {
       optionThree.classList.add('correct');
+      score++;
+      showContent();
+
    } else {
       optionThree.classList.add('wrong');
    }
@@ -128,19 +137,23 @@ const checkOptionFour = () => {
    
    if (optionFour.textContent === quiz[activeQuestion - 1].answer) {
       optionFour.classList.add('correct');
+      score++;
+      showContent();
+
    } else {
       optionFour.classList.add('wrong');
    }
    disableBtn();
    btn.classList.add('show');
- 
 }
 
 const nextQuestion = () => {
    activeQuestion = activeQuestion + 1;
    showContent();
    btn.classList.add('hide');
-   console.log('red');
+   options.forEach(option => {
+      option.classList.remove('wrong', 'correct', 'disabled');
+   })
 }
 
 // add event listener on all four options
