@@ -1,15 +1,19 @@
 // Caching selectors into variables
 const currentQuestion = document.querySelector('.current-question'),
 	totalQuestion      = document.querySelector('.total-question'),
-	currentScore       = document.querySelector('.current-score'),
 	question           = document.querySelector('.question'),
+	options            = document.querySelectorAll('li'),
 	optionOne          = document.querySelector('.option-1'),
 	optionTwo          = document.querySelector('.option-2'),
 	optionThree        = document.querySelector('.option-3'),
 	optionFour         = document.querySelector('.option-4'),
    btn                = document.querySelector('.btn');
    
-let activeQuestion = 1;
+
+let currentScore        = document.querySelector('.current-score'),
+   activeQuestion       = 1;
+   score                = 0;
+
 
 // Questions
 const quiz = [
@@ -20,7 +24,8 @@ const quiz = [
 			'Node.js is a JavaScript framework',
 			"Node.js is a JavaScript based framework/platform built on Google Chrome's JavaScript V8 Engine.",
 			'None of the above',
-		],
+      ],
+      answer: "Node.js is a JavaScript based framework/platform built on Google Chrome's JavaScript V8 Engine."
 	},
 	{
 		question: 'Which of the following command will show version of npm?',
@@ -29,7 +34,8 @@ const quiz = [
 			'$ node --version.',
 			'$ npm getVersion.',
 			'$ node getVersion.',
-		],
+      ],
+      answer: '$ npm --version.',
 	},
 	{
 		question: 'Which of the following command will show version of npm?',
@@ -38,12 +44,14 @@ const quiz = [
 			'console.log(\'total memory : \' + os.totalMemory() + " bytes.");',
 			'console.log(\'total memory : \' + os.getTotalMemory() + " bytes.");',
 			'None of the above.',
-		],
+      ],
+      answer: 'console.log(\'total memory : \' + os.totalMem() + " bytes.");'
 	},
 	{
 		question:
 			'Which of the following module do you need for cryptographic functionality?',
-		options: ['cryptic', 'cryptography', 'cryptoc', 'crypto'],
+      options: ['cryptic', 'cryptography', 'cryptoc', 'crypto'],
+      answer: 'crypto'
 	},
 
 	{
@@ -53,35 +61,103 @@ const quiz = [
 			'req.locals object',
 			'req.params object',
 			'req.parameters object',
-			'req.params object',
-		],
+			'req.paras object',
+      ],
+      answer: 'req.params object',
 	},
 ];
 
-// Answers
-const answers = [
-	{
-		q1: quiz[0].question[2],
-	},
-	{
-		q2: quiz[0].question[0],
-	},
-	{
-		q3: quiz[0].question[0],
-	},
-	{
-		q4: quiz[0].question[3],
-	},
-	{
-		q5: quiz[0].question[3],
-	},
-];
 
 // Change text content
 currentQuestion.textContent = activeQuestion;
 totalQuestion.textContent = quiz.length;
+currentScore.textContent = score;
 question.textContent = quiz[activeQuestion - 1].question;
 optionOne.textContent = quiz[activeQuestion - 1].options[0];
 optionTwo.textContent = quiz[activeQuestion - 1].options[1];
 optionThree.textContent = quiz[activeQuestion - 1].options[2];
 optionFour.textContent = quiz[activeQuestion - 1].options[3];
+
+
+// Check if question is answered. Return true if yes, return false if not answered
+const isAnswered = () => {
+   let correct = false;
+   // Looping through the li (options) to check if it has a class of correct
+   options.forEach(option => {
+      if (option.classList.contains('correct')) {
+        correct = true;
+      }
+   });
+   return correct;
+}
+
+
+
+const checkOptionOne = () => {
+
+   if (!isAnswered()) {      
+      if ((optionOne.textContent === quiz[activeQuestion - 1].answer)) {
+         optionOne.classList.add('wrong');
+         score++;
+         currentScore.textContent = score;
+      } else {
+         optionOne.classList.add('wrong');
+         optionThree.classList.add('correct');
+      }
+      btn.classList.add('show');
+   }
+   
+}
+
+const checkOptionTwo = () => {
+   if (!isAnswered()) {   
+      if ((optionTwo.textContent === quiz[activeQuestion - 1].answer)) {
+         optionTwo.classList.add('correct');
+         score++;
+         currentScore.textContent = score;
+      } else {
+         optionTwo.classList.add('wrong');
+         optionThree.classList.add('correct');
+      }
+      btn.classList.add('show');
+   }
+}
+
+const checkOptionThree = () => {
+   
+   if (optionThree.textContent === quiz[activeQuestion - 1].answer) {
+      optionThree.classList.add('correct');
+      score++;
+      currentScore.textContent = score;
+   } else {
+      optionThree.classList.add('wrong');
+   }
+   btn.classList.add('show');
+}
+
+const checkOptionFour = () => {
+   
+   if (!isAnswered()) {   
+      if (optionFour.textContent === quiz[activeQuestion - 1].answer) {
+         optionFour.classList.add('correct');
+         btn.classList.add('show');
+         score++;
+         currentScore.textContent = score;
+      } else {
+         btn.classList.add('show');
+         optionFour.classList.add('wrong');
+         optionThree.classList.add('correct');
+      }
+   }
+}
+
+const nextQuestion = () => {
+   
+}
+
+// add event listener on all four options
+optionOne.addEventListener('click', checkOptionOne);
+optionTwo.addEventListener('click', checkOptionTwo);
+optionThree.addEventListener('click', checkOptionThree);
+optionFour.addEventListener('click', checkOptionFour);
+btn.addEventListener('click', nextQuestion);

@@ -75,7 +75,11 @@ html {
 
 
 .hide {
-   display: none;
+   visibility: hidden;
+}
+
+.show{
+   visibility: visible;
 }
 
 
