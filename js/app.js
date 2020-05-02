@@ -69,90 +69,78 @@ const quiz = [
 
 
 // Change text content
-currentQuestion.textContent = activeQuestion;
-totalQuestion.textContent = quiz.length;
-currentScore.textContent = score;
-question.textContent = quiz[activeQuestion - 1].question;
-optionOne.textContent = quiz[activeQuestion - 1].options[0];
-optionTwo.textContent = quiz[activeQuestion - 1].options[1];
-optionThree.textContent = quiz[activeQuestion - 1].options[2];
-optionFour.textContent = quiz[activeQuestion - 1].options[3];
-
-
-// Check if question is answered. Return true if yes, return false if not answered
-const isAnswered = () => {
-   let correct = false;
-   // Looping through the li (options) to check if it has a class of correct
-   options.forEach(option => {
-      if (option.classList.contains('correct')) {
-        correct = true;
-      }
-   });
-   return correct;
+const showContent = () => {
+   currentQuestion.textContent = activeQuestion;
+   totalQuestion.textContent = quiz.length;
+   currentScore.textContent = score;
+   question.textContent = quiz[activeQuestion - 1].question;
+   optionOne.textContent = quiz[activeQuestion - 1].options[0];
+   optionTwo.textContent = quiz[activeQuestion - 1].options[1];
+   optionThree.textContent = quiz[activeQuestion - 1].options[2];
+   optionFour.textContent = quiz[activeQuestion - 1].options[3];
 }
 
+showContent();
 
+const disableBtn = () => {
+   options.forEach(option => {
+      option.classList.add('disabled');
+      if (option.textContent === quiz[activeQuestion - 1].answer){
+         option.classList.add('correct');
+      }
+   })
+}
 
 const checkOptionOne = () => {
 
-   if (!isAnswered()) {      
-      if ((optionOne.textContent === quiz[activeQuestion - 1].answer)) {
-         optionOne.classList.add('wrong');
-         score++;
-         currentScore.textContent = score;
-      } else {
-         optionOne.classList.add('wrong');
-         optionThree.classList.add('correct');
-      }
-      btn.classList.add('show');
+   if (optionOne.textContent === quiz[activeQuestion - 1].answer) {
+      optionOne.classList.add('correct');
+   } else {
+      optionOne.classList.add('wrong');
    }
+   disableBtn();
+   btn.classList.add('show');
    
 }
 
 const checkOptionTwo = () => {
-   if (!isAnswered()) {   
-      if ((optionTwo.textContent === quiz[activeQuestion - 1].answer)) {
-         optionTwo.classList.add('correct');
-         score++;
-         currentScore.textContent = score;
-      } else {
-         optionTwo.classList.add('wrong');
-         optionThree.classList.add('correct');
-      }
-      btn.classList.add('show');
+   if (optionTwo.textContent === quiz[activeQuestion - 1].answer) {
+      optionTwo.classList.add('correct');
+   } else {
+      optionTwo.classList.add('wrong');
    }
+   disableBtn();
+   btn.classList.add('show');
 }
 
 const checkOptionThree = () => {
    
    if (optionThree.textContent === quiz[activeQuestion - 1].answer) {
       optionThree.classList.add('correct');
-      score++;
-      currentScore.textContent = score;
    } else {
       optionThree.classList.add('wrong');
    }
+   disableBtn();
    btn.classList.add('show');
 }
 
 const checkOptionFour = () => {
    
-   if (!isAnswered()) {   
-      if (optionFour.textContent === quiz[activeQuestion - 1].answer) {
-         optionFour.classList.add('correct');
-         btn.classList.add('show');
-         score++;
-         currentScore.textContent = score;
-      } else {
-         btn.classList.add('show');
-         optionFour.classList.add('wrong');
-         optionThree.classList.add('correct');
-      }
+   if (optionFour.textContent === quiz[activeQuestion - 1].answer) {
+      optionFour.classList.add('correct');
+   } else {
+      optionFour.classList.add('wrong');
    }
+   disableBtn();
+   btn.classList.add('show');
+ 
 }
 
 const nextQuestion = () => {
-   
+   activeQuestion = activeQuestion + 1;
+   showContent();
+   btn.classList.add('hide');
+   console.log('red');
 }
 
 // add event listener on all four options
