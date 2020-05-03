@@ -57,7 +57,7 @@ const questions = [
 
 	{
 		question:
-			'Where is captured values are populated regarding route parameters?',
+			'Where is captured values populated regarding route parameters?',
 		options: [
 			'req.locals object',
 			'req.params object',
@@ -91,7 +91,7 @@ const showResult = () => {
    if (result < 50) {
       remark = 'You should probably join the next startng program to learn NodeJS.';
    } else if (result <= 75){
-      remark = 'Not bad, you can do better. Try and practice often.';
+      remark = 'Not bad, you can do better. Try and practice more often.';
    } else if (result <= 90) {
       remark = 'Almost, Very Good!'
    } else {
