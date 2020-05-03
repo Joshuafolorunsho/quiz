@@ -1,5 +1,5 @@
 // Caching selectors into variables
-const container       = document.querySelector('.container').children,
+const container       = document.querySelector('.container'),
    currentQuestion    = document.querySelector('.current-question'),
    totalQuestion      = document.querySelector('.total-question'),
    question           = document.querySelector('.question'),
@@ -85,9 +85,7 @@ showContent();
 
 // Show result
 const showResult = () => {
-   for (let item of container) {
-      item.innerHTML = '';
-   }
+   container.innerHTML =`<h1>${score} / ${questions.length}</h1>`;
 }
 
 const disableBtn = () => {
@@ -114,7 +112,7 @@ const checkOptionOne = () => {
    
     if (activeQuestion === questions.length) {
       btn.classList.remove('show');
-      setTimeout(showResult, 3000);
+      setTimeout(showResult, 2000);
    }
    
 }
@@ -133,7 +131,7 @@ const checkOptionTwo = () => {
 
     if (activeQuestion === questions.length) {
       btn.classList.remove('show');
-      setTimeout(showResult, 3000);
+      setTimeout(showResult, 2000);
    }
 }
 
@@ -152,7 +150,7 @@ const checkOptionThree = () => {
 
     if (activeQuestion === questions.length) {
       btn.classList.remove('show');
-      setTimeout(showResult, 3000);
+      setTimeout(showResult, 2000);
    }
    
 }
@@ -172,7 +170,7 @@ const checkOptionFour = () => {
 
     if (activeQuestion === questions.length) {
       btn.classList.remove('show');
-      setTimeout(showResult, 3000);
+      setTimeout(showResult, 2000);
    }
 }
 
