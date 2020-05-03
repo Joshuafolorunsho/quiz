@@ -99,7 +99,8 @@ const showResult = () => {
    }
    container.innerHTML =`
    <h1>${result}%</h1> 
-   <h3 class="center">${remark}</h3>
+   <h3 class="center mb">${remark}</h3>
+   <a href="index.html" class="btn">Want to try again?</a>
    `;
 }
 
