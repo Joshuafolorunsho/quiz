@@ -43,6 +43,7 @@ html {
    padding: .7rem 0;
 }
 
+
 .option {
    width: 100%;
    height: 40px;
@@ -56,6 +57,7 @@ html {
    font-size: 1.1rem;
 }
 
+
 .option.disabled{
    pointer-events: none;
 }
@@ -64,6 +66,14 @@ html {
 .btn-container {
    display: flex;
    justify-content: flex-end;
+}
+
+
+.container.result {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
 }
 
 
