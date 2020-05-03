@@ -85,7 +85,22 @@ showContent();
 
 // Show result
 const showResult = () => {
-   container.innerHTML =`<h1>${score} / ${questions.length}</h1>`;
+   container.classList.add('result', 'blue');
+   const result = (score / questions.length) * 100;
+   let remark;
+   if (result < 50) {
+      remark = 'You should probably join the next startng program to learn NodeJS.';
+   } else if (result <= 75){
+      remark = 'Not bad, you can do better. Try and practice often.';
+   } else if (result <= 90) {
+      remark = 'Almost, Very Good!'
+   } else {
+      remark = 'Perfecto!';
+   }
+   container.innerHTML =`
+   <h1>${result}%</h1> 
+   <h3 class="center">${remark}</h3>
+   `;
 }
 
 const disableBtn = () => {
@@ -111,8 +126,7 @@ const checkOptionOne = () => {
    btn.classList.add('show');
    
     if (activeQuestion === questions.length) {
-      btn.classList.remove('show');
-      setTimeout(showResult, 2000);
+      btn.textContent = 'Submit';
    }
    
 }
@@ -130,8 +144,7 @@ const checkOptionTwo = () => {
    btn.classList.add('show');
 
     if (activeQuestion === questions.length) {
-      btn.classList.remove('show');
-      setTimeout(showResult, 2000);
+      btn.textContent = 'Submit';
    }
 }
 
@@ -149,8 +162,7 @@ const checkOptionThree = () => {
    btn.classList.add('show');
 
     if (activeQuestion === questions.length) {
-      btn.classList.remove('show');
-      setTimeout(showResult, 2000);
+      btn.textContent = 'Submit';
    }
    
 }
@@ -169,8 +181,7 @@ const checkOptionFour = () => {
    btn.classList.add('show');
 
     if (activeQuestion === questions.length) {
-      btn.classList.remove('show');
-      setTimeout(showResult, 2000);
+      btn.textContent = 'Submit';
    }
 }
 
@@ -182,7 +193,9 @@ const nextQuestion = () => {
       options.forEach(option => {
          option.classList.remove('wrong', 'correct', 'disabled');
       })
-   } 
+   } else {
+      showResult();
+   }
 }
 
 // add event listener on all four options
