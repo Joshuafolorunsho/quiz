@@ -57,7 +57,7 @@ const questions = [
 
 	{
 		question:
-			'Where is captured values populated regarding route parameters?',
+			'Where are captured values populated regarding route parameters?',
 		options: [
 			'req.locals object',
 			'req.params object',
