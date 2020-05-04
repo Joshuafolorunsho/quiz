@@ -39,7 +39,7 @@ const questions = [
       answer: '$ npm --version.',
 	},
 	{
-		question: 'Which of the following command will show version of npm?',
+		question: 'Which of the following command will show the information about the memory of your system?',
 		options: [
 			'console.log(\'total memory : \' + os.totalMem() + " bytes.");',
 			'console.log(\'total memory : \' + os.totalMemory() + " bytes.");',
